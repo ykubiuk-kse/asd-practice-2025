@@ -4,19 +4,17 @@
     {
         static void Main(string[] args)
         {
-            GraphAL gAl = new GraphAL(5);
+            MinHeap heap = new MinHeap();
 
-            gAl.AddEdge(0, 1);
-            gAl.AddEdge(0, 2);
-            gAl.AddEdge(2, 3);
-            gAl.AddEdge(2, 4);
-            gAl.AddEdge(3, 4);
+            for (int i = 10; i >= 0; i--) {
+                heap.Add(i);
+            }
 
-            gAl.Print();
+            heap.Print();
 
-            gAl.DFS(0);
-            gAl.DFSRecursive(0);
-            gAl.BFS(0);
+            for (int i = 0; i <= 10; i++) {
+                Console.WriteLine(heap.ExtractMin());
+            }
         }
     }
 }
