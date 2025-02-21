@@ -2,16 +2,16 @@
 public class GraphAL
 {
     private int verticesCount;
-    private ArrayList[] adjacencyList;
+    private ArrayList<int>[] adjacencyList;
 
     public GraphAL(int v)
     {
         verticesCount = v;
-        adjacencyList = new ArrayList[verticesCount];
+        adjacencyList = new ArrayList<int>[verticesCount];
 
         for (int i = 0; i < verticesCount; i++)
         {
-            adjacencyList[i] = new ArrayList();
+            adjacencyList[i] = new ArrayList<int>();
         }
     }
 
@@ -37,7 +37,7 @@ public class GraphAL
                 visited[vertex] = true;
             }
 
-            ArrayList neighbors = adjacencyList[vertex];
+            ArrayList<int> neighbors = adjacencyList[vertex];
 
             for (int i = 0; i < neighbors.Size(); i++)
             {
@@ -62,7 +62,7 @@ public class GraphAL
             visited[v] = true;
         }
 
-        ArrayList neighbors = adjacencyList[v];
+        ArrayList<int> neighbors = adjacencyList[v];
 
         for (int i = 0; i < neighbors.Size(); i++)
         {
@@ -95,7 +95,7 @@ public class GraphAL
             
             Console.Write($"{ vertex } -> ");
             
-            ArrayList neighbors = adjacencyList[vertex];
+            ArrayList<int> neighbors = adjacencyList[vertex];
 
             for (int i = 0; i < neighbors.Size(); i++) {
                 int neighbor = neighbors.GetAt(i);

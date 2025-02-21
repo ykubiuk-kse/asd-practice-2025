@@ -4,17 +4,17 @@
     {
         static void Main(string[] args)
         {
-            MinHeap heap = new MinHeap();
+            PriorityQueue<string, int> pq = new PriorityQueue<string, int>();
 
-            for (int i = 10; i >= 0; i--) {
-                heap.Add(i);
+            pq.Enqueue("C", 1);
+            pq.Enqueue("A", 1);
+            pq.Enqueue("B", 9);
+            pq.Enqueue("D", 3);
+
+            while (pq.Size() > 0) {
+                Console.WriteLine(pq.Dequeue());
             }
 
-            heap.Print();
-
-            for (int i = 0; i <= 10; i++) {
-                Console.WriteLine(heap.ExtractMin());
-            }
         }
     }
 }

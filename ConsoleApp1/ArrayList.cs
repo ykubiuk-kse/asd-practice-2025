@@ -1,6 +1,6 @@
-public class ArrayList
+public class ArrayList<T>
 {
-    private int[] array;
+    private T[] array;
     private int capacity;
     private int size;
 
@@ -8,7 +8,7 @@ public class ArrayList
     {
         capacity = 8;
         size = 0;
-        array = new int[capacity];
+        array = new T[capacity];
     }
 
 
@@ -16,7 +16,7 @@ public class ArrayList
     Worst: O(N)
     Average: O(1)
     */
-    public void PushBack(int element)
+    public void PushBack(T element)
     {
         array[size] = element;
         size++;
@@ -31,7 +31,7 @@ public class ArrayList
     Worst: O(N) + O(N) = O(N)
     Average: O(N)
     */
-    public void PushFront(int element)
+    public void PushFront(T element)
     {
         // O(N)
         for (int i = size; i > 0; i--)
@@ -50,7 +50,7 @@ public class ArrayList
     }
 
     // O(1)
-    public int PopBack()
+    public T PopBack()
     {
         if (size == 0)
         {
@@ -58,20 +58,20 @@ public class ArrayList
         }
 
         size--;
-        int result = array[size];
+        T result = array[size];
 
         return result;
     }
 
     // O(N)
-    public int PopFront()
+    public T PopFront()
     {
         if (size == 0)
         {
             throw new Exception("ArrayList is empty!");
         }
 
-        int result = array[0];
+        T result = array[0];
 
         for (int i = 0; i < size; i++)
         {
@@ -84,7 +84,7 @@ public class ArrayList
     }
 
     // O(1)
-    public void SetAt(int element, int index)
+    public void SetAt(T element, int index)
     {
         if (index < 0 || index > size - 1)
         {
@@ -95,7 +95,7 @@ public class ArrayList
     }
 
     // O(1)
-    public int GetAt(int index)
+    public T GetAt(int index)
     {
         if (index < 0 || index > size - 1)
         {
@@ -108,7 +108,7 @@ public class ArrayList
     private void Resize()
     {
         capacity *= 2;
-        int[] newArray = new int[capacity];
+        T[] newArray = new T[capacity];
 
         for (int i = 0; i < size; i++)
         {

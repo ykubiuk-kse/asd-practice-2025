@@ -1,5 +1,5 @@
-class MinHeap {
-    private ArrayList array = new ArrayList();
+class MinHeap<T> where T: IComparable<T> {
+    private ArrayList<T> array = new ArrayList<T>();
 
     private int LeftIndex(int parentIndex) {
         return parentIndex * 2 + 1;
@@ -13,13 +13,13 @@ class MinHeap {
         return (childIndex - 1) / 2;
     }
 
-    public void Add(int element) {
+    public void Add(T element) {
         array.PushBack(element);
         HeapifyUp();
     }
 
-    public int ExtractMin() {
-        int min = array.GetAt(0);
+    public T ExtractMin() {
+        T min = array.GetAt(0);
 
         Swap(0, array.Size() - 1);
         array.PopBack();
@@ -32,7 +32,7 @@ class MinHeap {
     private void HeapifyUp() {
         int index = array.Size() - 1;
 
-        while(index > 0 && array.GetAt(ParentIndex(index)) > array.GetAt(index)) {
+        while(index > 0 && array.GetAt(ParentIndex(index)).CompareTo(array.GetAt(index)) > 0) {
             Swap(index, ParentIndex(index));
             index = ParentIndex(index);
         }
@@ -43,11 +43,11 @@ class MinHeap {
         int rightChildIndex = RightIndex(index);
         int smallestIndex = index;
 
-        if (leftChildIndex < array.Size() && array.GetAt(smallestIndex) > array.GetAt(leftChildIndex)) {
+        if (leftChildIndex < array.Size() && array.GetAt(smallestIndex).CompareTo(array.GetAt(leftChildIndex)) > 0) {
             smallestIndex = leftChildIndex;
         }
 
-        if (rightChildIndex < array.Size() && array.GetAt(smallestIndex) > array.GetAt(rightChildIndex)) {
+        if (rightChildIndex < array.Size() && array.GetAt(smallestIndex).CompareTo(array.GetAt(rightChildIndex)) > 0) {
             smallestIndex = rightChildIndex;
         }
 
@@ -58,7 +58,7 @@ class MinHeap {
     }
 
     private void Swap(int index1, int index2) {
-        int temp = array.GetAt(index1);
+        T temp = array.GetAt(index1);
         array.SetAt(array.GetAt(index2), index1);
         array.SetAt(temp, index2);
     }
@@ -72,5 +72,9 @@ class MinHeap {
             Console.Write($"{array.GetAt(i)} ");
         }
         Console.WriteLine();
+    }
+
+    public int Size() {
+        return array.Size();
     }
 }
