@@ -4,17 +4,28 @@
     {
         static void Main(string[] args)
         {
-            PriorityQueue<string, int> pq = new PriorityQueue<string, int>();
+            LinkedList<int> list = new LinkedList<int>();
 
-            pq.Enqueue("C", 1);
-            pq.Enqueue("A", 1);
-            pq.Enqueue("B", 9);
-            pq.Enqueue("D", 3);
-
-            while (pq.Size() > 0) {
-                Console.WriteLine(pq.Dequeue());
+            for (int i = 0; i < 10; i++) {
+                // list.Print();
+                list.PushBack(i);
             }
+            list.Print();
 
+            list.SetAt(0, 10);
+            list.Print();
+            list.SetAt(9, 90);
+            list.Print();
+            list.SetAt(5, 50);
+            list.Print();
+            list.SetAt(1000, 123);
+
+            // for (int i = 0; i < 10; i++) {
+            //     list.Print();
+            //     Console.WriteLine($"Deleting: {list.PopFront()}");
+            // }
+
+            // list.PopFront();
         }
     }
 }
