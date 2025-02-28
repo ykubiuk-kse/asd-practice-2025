@@ -92,7 +92,7 @@ public class LinkedList<T>
         return result;
     }
 
-    private Node<T> GetNodeAt(int index) {
+    public Node<T> GetNodeAt(int index) {
         if (index < 0 || index > size - 1) {
             throw new Exception("Out of bounds access!");
         }
@@ -136,5 +136,9 @@ public class LinkedList<T>
         }
 
         Console.WriteLine("[null]");
+    }
+
+    public int Size() {
+        return size;
     }
 }

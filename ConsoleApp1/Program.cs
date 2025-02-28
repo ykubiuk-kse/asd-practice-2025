@@ -4,28 +4,16 @@
     {
         static void Main(string[] args)
         {
-            LinkedList<int> list = new LinkedList<int>();
+            HashTable<string, int> ht = new HashTable<string, int>(2);
 
-            for (int i = 0; i < 10; i++) {
-                // list.Print();
-                list.PushBack(i);
-            }
-            list.Print();
-
-            list.SetAt(0, 10);
-            list.Print();
-            list.SetAt(9, 90);
-            list.Print();
-            list.SetAt(5, 50);
-            list.Print();
-            list.SetAt(1000, 123);
-
-            // for (int i = 0; i < 10; i++) {
-            //     list.Print();
-            //     Console.WriteLine($"Deleting: {list.PopFront()}");
-            // }
-
-            // list.PopFront();
+            ht.Set("key1", 1);
+            ht.Print();
+            ht.Set("key2", 2);
+            ht.Print();
+            ht.Set("key3", 2);
+            ht.Print();
+            ht.Set("key1", 11);
+            ht.Print();
         }
     }
 }
