@@ -78,8 +78,10 @@ public class LinkedList<T>
         return result;
     }
 
-    public T PopFront() {
-        if (size < 2) {
+    public T PopFront()
+    {
+        if (size < 2)
+        {
             return PopBack();
         }
 
@@ -92,36 +94,66 @@ public class LinkedList<T>
         return result;
     }
 
-    public Node<T> GetNodeAt(int index) {
-        if (index < 0 || index > size - 1) {
+    public Node<T> GetNodeAt(int index)
+    {
+        if (index < 0 || index > size - 1)
+        {
             throw new Exception("Out of bounds access!");
         }
 
-        if (index == 0) {
+        if (index == 0)
+        {
             return head!;
         }
 
-        if (index == size - 1) {
+        if (index == size - 1)
+        {
             return tail!;
         }
 
         Node<T> cur = head!;
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++)
+        {
             cur = cur.next!;
         }
 
         return cur;
     }
 
-    public T GetAt(int index) {
+    public T GetAt(int index)
+    {
         return GetNodeAt(index).data;
     }
 
-    public void SetAt(int index, T element) {
+    public void SetAt(int index, T element)
+    {
         Node<T> node = GetNodeAt(index);
 
         node.data = element;
+    }
+
+    public T RemoveAt(int index)
+    {
+        if (index == 0)
+        {
+            return PopFront();
+        }
+
+        if (index == size - 1)
+        {
+            return PopBack();
+        }
+
+        var prev = GetNodeAt(index - 1);
+        var result = prev.next!.data;
+        var next = prev.next!.next;
+
+        prev.next = next;
+        next!.prev = prev;
+
+        size--;
+        return result;
     }
 
     public void Print()
@@ -138,7 +170,8 @@ public class LinkedList<T>
         Console.WriteLine("[null]");
     }
 
-    public int Size() {
+    public int Size()
+    {
         return size;
     }
 }
